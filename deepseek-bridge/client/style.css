@@ -1,0 +1,473 @@
+/* التنسيقات العامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* الشريط العلوي */
+header {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #334155;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: #3b82f6;
+}
+
+.logo h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* الكروت الرئيسية */
+.card {
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #475569;
+    backdrop-filter: blur(10px);
+}
+
+.dashboard-card {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.card-icon {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-icon i {
+    font-size: 4rem;
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
+    padding: 20px;
+    border-radius: 50%;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+    text-align: center;
+}
+
+.description {
+    text-align: center;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* نماذج الإدخال */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.input-group label i {
+    margin-left: 8px;
+    color: #3b82f6;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #475569;
+    background: rgba(15, 23, 42, 0.7);
+    color: #f1f5f9;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* الأزرار */
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(30, 41, 59, 0.9);
+    color: #cbd5e1;
+    border: 2px solid #475569;
+}
+
+.btn-secondary:hover {
+    background: rgba(51, 65, 85, 0.9);
+    border-color: #64748b;
+}
+
+.btn-large {
+    padding: 18px 30px;
+    font-size: 1.2rem;
+}
+
+/* لوحة التحكم */
+.welcome-section {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #475569;
+}
+
+.avatar {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.welcome-text {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* لوحة الحالة */
+.status-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.status-item {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #475569;
+}
+
+.status-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.status-icon.success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+}
+
+.status-icon.ready {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.status-icon.memory {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+
+.status-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #f1f5f9;
+}
+
+.status-details p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* قسم الإجراءات */
+.action-section {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid #475569;
+}
+
+.action-section h3 {
+    text-align: right;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+}
+
+.action-section h3 i {
+    margin-left: 10px;
+    color: #8b5cf6;
+}
+
+.action-description {
+    color: #cbd5e1;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* التذييلات */
+.dashboard-footer {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.info-note, .action-note {
+    background: rgba(59, 130, 246, 0.1);
+    border-right: 4px solid #3b82f6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.info-note i, .action-note i {
+    color: #3b82f6;
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.action-note {
+    background: rgba(168, 85, 247, 0.1);
+    border-right-color: #8b5cf6;
+}
+
+.action-note i {
+    color: #8b5cf6;
+}
+
+/* النافذة المنبثقة */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #1e293b;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow: hidden;
+    border: 1px solid #475569;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    padding: 20px 30px;
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid #475569;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #f1f5f9;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #f1f5f9;
+}
+
+.modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: calc(80vh - 80px);
+}
+
+.modal-body p {
+    margin-bottom: 20px;
+    color: #cbd5e1;
+}
+
+#token-content {
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    color: #7dd3fc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* تذييل الصفحة */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 25px 0 10px;
+    color: #64748b;
+    border-top: 1px solid #334155;
+    font-size: 0.95rem;
+}
+
+.footer-small {
+    font-size: 0.85rem;
+    margin-top: 5px;
+    color: #475569;
+}
+
+/* كلاسات المساعدة */
+.hidden {
+    display: none !important;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .welcome-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .status-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-footer {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 20px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 12px 20px;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+}

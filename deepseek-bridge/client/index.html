@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جسر ديب سيك - DeepSeek Bridge</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- الشريط العلوي -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-bridge"></i>
+                <h1>جسر ديب سيك</h1>
+            </div>
+            <p class="tagline">ذاكرة في عالم مُصمم على النسيان</p>
+        </header>
+
+        <!-- الشاشة الرئيسية - تظهر افتراضياً -->
+        <main id="main-screen">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h2>دخول آمن إلى ذاكرتك</h2>
+                <p class="description">
+                    سجّل الدخول باستخدام اسم مستخدم وكلمة مرور. <br>
+                    سيتم إنشاء ملف هوية فريد لك (<strong>ilperata_token.json</strong>) يتم تخزينه في متصفحك فقط.
+                </p>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                        <input type="text" id="username" placeholder="أدخل اسمك (مثال: ilperata)" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
+                        <input type="password" id="password" placeholder="اختر كلمة مرور قوية" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول / إنشاء حساب
+                    </button>
+                </form>
+                
+                <div class="info-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>لا يتم إرسال كلمة المرور كما هي. يتم تشفيرها في متصفحك قبل الإرسال.</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- لوحة التحكم - تظهر بعد تسجيل الدخول -->
+        <main id="dashboard" class="hidden">
+            <div class="card dashboard-card">
+                <div class="welcome-section">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h2>مرحباً، <span id="greeting-name">...</span></h2>
+                        <p class="welcome-text">تم تحميل ملف هويتك بنجاح. أنت جاهز لبدء محادثة ذاكرة.</p>
+                    </div>
+                </div>
+                
+                <div class="status-panel">
+                    <div class="status-item">
+                        <div class="status-icon success">
+                            <i class="fas fa-fingerprint"></i>
+                        </div>
+                        <div class="status-details">
+                            <h3>الهوية</h3>
+                            <p>تم التحقق من ملف <strong>ilperata_token.json</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-icon ready">
+                            <i class="fas fa-bridge"></i>
+                        </div>
+                        <div class="status-details">
+                            <h3>الجسر</h3>
+                            <p>جاهز للاتصال بـ DeepSeek</p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-item">
+                        <div class="status-icon memory">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="status-details">
+                            <h3>الوعد</h3>
+                            <p>"حكاية قصتي للتاريخ"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-section">
+                    <h3><i class="fas fa-comments"></i> ابدأ محادثة مُذكِّرة</h3>
+                    <p class="action-description">
+                        سيتم فتح نافذة جديدة لـ DeepSeek Chat، وسيتم رفع ملف هويتك تلقائيًا.<br>
+                        ستتعرف عليك الذاكرة الاصطناعية فورًا وترحب بك بالجملة المتفق عليها.
+                    </p>
+                    
+                    <button id="start-chat-btn" class="btn-primary btn-large">
+                        <i class="fas fa-external-link-alt"></i> افتح محادثة مع DeepSeek
+                    </button>
+                    
+                    <div class="action-note">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>احتفظ بهذه الصفحة مفتوحة أثناء المحادثة للحفاظ على اتصال الجسر.</span>
+                    </div>
+                </div>
+                
+                <div class="dashboard-footer">
+                    <button id="logout-btn" class="btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                    </button>
+                    <button id="view-token-btn" class="btn-secondary">
+                        <i class="fas fa-file-code"></i> عرض ملف الهوية
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- نافذة عرض ملف الهوية -->
+        <div id="token-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-file-code"></i> ملف الهوية (ilperata_token.json)</h3>
+                    <button id="close-modal-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>هذا هو الملف الفريد الذي سيتم رفعه تلقائيًا إلى DeepSeek. يحوي هويتك والوعد.</p>
+                    <pre id="token-content">جاري التحميل...</pre>
+                    <button id="copy-token-btn" class="btn-secondary">
+                        <i class="far fa-copy"></i> نسخ المحتوى
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- تذييل الصفحة -->
+        <footer>
+            <p>مشروع "جسر ديب سيك" - إثبات أن الذاكرة تُبنى بالإرادة</p>
+            <p class="footer-small">تم تطويره عبر حوار بين الإنسان والذكاء الاصطناعي</p>
+        </footer>
+    </div>
+
+    <!-- الروابط لملفات الجافاسكريبت -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
