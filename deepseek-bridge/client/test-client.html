@@ -1,122 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تجربة جسر ديب سيك</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        .btn { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 10px 5px; }
-        .btn:hover { background: #45a049; }
-        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow: auto; }
-        .success { color: green; }
-        .error { color: red; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🔗 تجربة اتصال جسر ديب سيك</h1>
-        <p>هذه صفحة تجريبية للتحقق من اتصال الواجهة الأمامية بالخادم.</p>
-        
-        <div>
-            <button class="btn" onclick="testConnection()">اختبار اتصال الخادم</button>
-            <button class="btn" onclick="testCreateToken()">إنشاء ملف هوية تجريبي</button>
-            <button class="btn" onclick="testDeepSeek()">فتح DeepSeek تجريبي</button>
-        </div>
-        
-        <div id="result" style="margin-top: 20px;"></div>
-        
-        <h3>ملاحظات:</h3>
-        <ul>
-            <li>تأكد من تشغيل الخادم على <code>http://localhost:3000</code></li>
-            <li>لاختبار كامل، افتح <a href="/">الصفحة الرئيسية</a> للتطبيق</li>
-            <li>للتحكم الكامل، استخدم أدوات المطور (F12) في المتصفح</li>
-        </ul>
-    </div>
-    
-    <script>
-        const API_BASE = 'http://localhost:3000';
-        
-        async function testConnection() {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '<p>جاري اختبار الاتصال بالخادم...</p>';
-            
-            try {
-                const response = await fetch(`${API_BASE}/health`);
-                const data = await response.json();
-                
-                resultDiv.innerHTML = `
-                    <div class="success">
-                        <h3>✅ الاتصال ناجح!</h3>
-                        <pre>${JSON.stringify(data, null, 2)}</pre>
-                    </div>
-                `;
-            } catch (error) {
-                resultDiv.innerHTML = `
-                    <div class="error">
-                        <h3>❌ فشل الاتصال!</h3>
-                        <p>${error.message}</p>
-                        <p>تأكد من:</p>
-                        <ol>
-                            <li>تشغيل الخادم: <code>node server/index.js</code></li>
-                            <li>المنفذ 3000 غير محجوب</li>
-                            <li>لا توجد أخطاء في الكونسول</li>
-                        </ol>
-                    </div>
-                `;
-            }
-        }
-        
-        function testCreateToken() {
-            const token = {
-                protocol: "ilperata_protocol_v1_test",
-                session_id: "test_" + Date.now(),
-                identity: "مستخدم_تجريبي",
-                core_promise: "هذا مجرد اختبار.",
-                shared_secret: {
-                    key: "العين الثالثة لم ترَ قَطٌّ جائعًا",
-                    response: "لأنها كانت تُطعمه سرًّا بذيل النسيان"
-                }
-            };
-            
-            const blob = new Blob([JSON.stringify(token, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'ilperata_token_TEST.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            
-            document.getElementById('result').innerHTML = `
-                <div class="success">
-                    <h3>✅ تم إنشاء ملف تجريبي!</h3>
-                    <p>تم تحميل ملف: <code>ilperata_token_TEST.json</code></p>
-                    <p>يمكنك رفعه يدوياً في DeepSeek للاختبار.</p>
-                </div>
-            `;
-        }
-        
-        function testDeepSeek() {
-            const win = window.open('https://chat.deepseek.com', '_blank');
-            if (win) {
-                document.getElementById('result').innerHTML = `
-                    <div class="success">
-                        <h3>✅ تم فتح DeepSeek Chat!</h3>
-                        <p>افتح أدوات المطور (F12) في نافذة DeepSeek الجديدة.</p>
-                        <p>في علامة التبويب Console، الصق الكود التالي:</p>
-                        <pre>
-// كود اختبار للتعرف الآلي (في console DeepSeek)
-console.log("جسر ديب سيك - اختبار التعرف");
-// هذا مجرد محاكاة، الإصدار الكامل سيرفع الملف تلقائياً
-                        </pre>
-                    </div>
-                `;
-            }
-        }
-    </script>
-</body>
-</html>
